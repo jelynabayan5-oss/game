@@ -1,0 +1,150 @@
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    margin: 0;
+    overflow: hidden;
+    background-color: #1a1a2e;
+    font-family: sans-serif;
+}
+
+#gameShell {
+    position: relative;
+    width: min(calc(100vw - 16px), calc((100vh - 16px) * 2));
+    line-height: 0;
+    isolation: isolate;
+}
+
+#homeVideo {
+    display: none;
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    filter: brightness(0.48) saturate(0.85);
+    pointer-events: none;
+}
+
+#gameShell.home-menu #homeVideo {
+    display: block;
+}
+
+#gameCanvas {
+    position: relative;
+    z-index: 0;
+    display: block;
+    width: 100%;
+    height: auto;
+    border: 2px solid #ffffff;
+    background-color: #0f0f1a;
+    box-shadow: 0 0 20px rgba(255, 255, 255, 0.2);
+    box-sizing: border-box;
+    outline-offset: 4px;
+}
+
+#gameShell.home-menu #gameCanvas {
+    background-color: transparent;
+}
+
+#touchControls {
+    display: none;
+    position: absolute;
+    inset: 0;
+    z-index: 1;
+    pointer-events: none;
+}
+
+#touchControls[hidden],
+#soundToggle[hidden] {
+    display: none;
+}
+
+.move-stick,
+.action-buttons button,
+#soundToggle {
+    color: #fff;
+    background: rgba(8, 15, 35, 0.78);
+    border: 2px solid #00ffd6;
+    font: bold 14px sans-serif;
+    touch-action: none;
+    pointer-events: auto;
+}
+
+.move-stick {
+    position: absolute;
+    left: 4%;
+    bottom: 6%;
+    width: clamp(90px, 19vw, 170px);
+    aspect-ratio: 1;
+    border-radius: 50%;
+}
+
+.move-stick span {
+    position: absolute;
+    width: 38%;
+    aspect-ratio: 1;
+    top: 31%;
+    left: 31%;
+    border-radius: 50%;
+    background: rgba(0, 255, 214, 0.55);
+    border: 2px solid #bafff2;
+    box-sizing: border-box;
+}
+
+.action-buttons {
+    position: absolute;
+    right: 3%;
+    bottom: 5%;
+    display: grid;
+    grid-template-columns: repeat(2, auto);
+    gap: 8px;
+    pointer-events: none;
+}
+
+.action-buttons button {
+    min-width: 70px;
+    min-height: 48px;
+    border-color: #ffd84d;
+    border-radius: 10px;
+}
+
+.action-buttons button[data-action="ultimate"] {
+    grid-column: 1 / -1;
+}
+
+#soundToggle {
+    grid-column: 1 / -1;
+    justify-self: end;
+    padding: 8px 12px;
+    border-color: #bafff2;
+    border-radius: 8px;
+    font-size: 12px;
+    min-width: 78px;
+}
+
+.visually-hidden {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border: 0;
+}
+
+@media (max-width: 800px), (pointer: coarse) {
+    #touchControls:not([hidden]) {
+        display: block;
+    }
+
+    .action-buttons button {
+        min-width: 62px;
+        min-height: 42px;
+        font-size: 11px;
+    }
+}

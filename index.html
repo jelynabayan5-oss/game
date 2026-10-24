@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bullet Hell Shooter Project</title>
+    <link rel="stylesheet" href="style.css"> 
+</head>
+<body>
+    <main id="gameShell">
+        <video id="homeVideo" muted loop playsinline preload="auto" aria-hidden="true">
+            <source src="home-video.mp4" type="video/mp4">
+        </video>
+        <canvas id="gameCanvas" width="500" height="650" tabindex="0" role="img"
+            aria-label="Vector Bullet Project campaign. Choose one of four jets, then clear ten enemy waves and a boss in each of five sectors: Neon Sky, Asteroid Belt, Storm Zone, Glitch Sector, and The Core. Waves end when all enemies are defeated, with a short break between waves. Difficulty sets enemy counts. Sector rewards unlock permanent upgrades, and progress saves so you can continue from the latest sector. After the final boss, Loop 2 increases enemy counts, strength, speed, and score. Use arrow keys and Enter in menus, WASD to move, and the mouse to aim. Collect power-ups, charge your jet ultimate, use Q, and pause with P or Escape."></canvas>
+        <div id="touchControls" role="group" aria-label="Touch game controls" hidden>
+            <button id="moveStick" class="move-stick" type="button" aria-label="Movement joystick">
+                <span aria-hidden="true"></span>
+            </button>
+            <div class="action-buttons">
+                <button type="button" data-action="fire" aria-label="Toggle auto fire">FIRE</button>
+                <button type="button" data-action="pause" aria-label="Pause or resume game">PAUSE</button>
+                <button type="button" data-action="ultimate" aria-label="Jet ultimate attack" disabled>ULTIMATE 0%</button>
+                <button id="soundToggle" type="button" aria-pressed="true">Sound: On</button>
+            </div>
+        </div>
+    </main>
+    <p id="gameAnnouncement" class="visually-hidden" aria-live="polite" aria-atomic="true"></p>
+
+    <script src="game.js"></script>
+</body>
+</html>
